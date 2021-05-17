@@ -1,15 +1,13 @@
-import NavBar from "./components/NavBar/NavBar";
-import {Alert } from "react-bootstrap";
+import NavBar from "./components/NavBar/NavBar"
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 
 
 function App() {
   return (
     <div className="App">
+      
       <NavBar></NavBar>
-
-      <Alert key="1" variant="dark">
-        Hola mundo!
-      </Alert>
+      <ItemListContainer saludo="Hola, Tutor!"></ItemListContainer>
 
     </div>
   );

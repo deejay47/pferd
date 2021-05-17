@@ -1,5 +1,6 @@
 import React from "react";
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/img/logos/logo.png'
+import CartWidget from '../CartWidget/CartWidget'
 import {Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 import "./NavBar.scss";
@@ -23,6 +24,7 @@ class NavBar extends React.Component {
         <NavDropdown.Divider />
         <NavDropdown.Item href="#action/3.4">Perimetrales</NavDropdown.Item>
       </NavDropdown>
+      <Nav.Link><CartWidget className="float-right"></CartWidget></Nav.Link>
     </Nav>
     
   </Navbar.Collapse>
