@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Button, Col } from "react-bootstrap";
-import ProductImage from "../../assets/img/products/deflector_xm.jpeg";
 import ItemCount from "../ItemCount/ItemCount";
 
 import "./Item.scss";
@@ -18,12 +17,11 @@ class Item extends React.Component {
     return (
       <Col>
         <Card className="text-center">
-          <Card.Img variant="top" src={ProductImage} />
+          <Card.Img variant="top" src={this.state.item.pictureUrl} />
           <Card.Body>
-            <Card.Title>{this.state.item.name}</Card.Title>
+            <Card.Title>{this.state.item.title}</Card.Title>
             <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              condimentum nisi in felis ultrices lacinia.
+            {this.state.item.description}
             </Card.Text>
               <p className="price-tag">$ {this.state.item.price}</p>
                 <ItemCount stock={this.state.item.stock}></ItemCount>
