@@ -1,15 +1,24 @@
 import React from "react";
-import { Card, Container, Button, Row, Col } from "react-bootstrap";
-import ProductImage from '../../assets/img/products/deflector_xm.jpeg'
+import { Container, Row, Col } from "react-bootstrap";
+import Item from "../Item/Item";
 
 import "./ItemListContainer.scss";
 
 class ItemListContainer extends React.Component {
 
   constructor(props){
+
     super(props);
-    this.saludo = props.saludo
+    
+    // TODO: Hardcode de items
+    this.items = [
+      {id: 1, name: 'producto 1', price: 1700, stock: 12},
+      {id: 2, name: 'producto 2', price: 2000, stock: 16},
+      {id: 3, name: 'producto 3', price: 1100, stock: 0}
+    ]
+
   }
+
   render() {
     return (
       <Container fluid="md">
@@ -22,57 +31,8 @@ class ItemListContainer extends React.Component {
           </Col>
         </Row>
 
-        <Col>
-          <Card>
-            <Card.Img variant="top" src={ProductImage} />
-            <Card.Body>
-              <Card.Title>Producto</Card.Title>
-              <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.
-              </Card.Text>
-              <Button variant="primary">Agregar al carrito</Button>
-            </Card.Body>
-          </Card>
-        </Col>
+        {this.items?.map((item) => <Item key={item.id} item={item}></Item>)}
 
-        <Col>
-          <Card>
-            <Card.Img variant="top" src={ProductImage} />
-            <Card.Body>
-              <Card.Title>Producto</Card.Title>
-              <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.
-              </Card.Text>
-              <Button variant="primary">Agregar al carrito</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col>
-          <Card>
-            <Card.Img variant="top" src={ProductImage} />
-            <Card.Body>
-              <Card.Title>Producto</Card.Title>
-              <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.
-              </Card.Text>
-              <Button variant="primary">Agregar al carrito</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-
-        <Col>
-          <Card>
-            <Card.Img variant="top" src={ProductImage} />
-            <Card.Body>
-              <Card.Title>Producto</Card.Title>
-              <Card.Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.
-              </Card.Text>
-              <Button variant="primary">Agregar al carrito</Button>
-            </Card.Body>
-          </Card>
-        </Col>
       </Row>
       </Container>
     );

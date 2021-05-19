@@ -8,7 +8,7 @@ import "./NavBar.scss";
 class NavBar extends React.Component {
   render() {
     return (
-<Navbar bg="light" expand="md">
+<Navbar bg="light" expand="md" className="navBar">
   <Navbar.Brand href="#home">
     <img className='brand-logo' src={Logo} alt="Pferd Logo" />
     </Navbar.Brand>
