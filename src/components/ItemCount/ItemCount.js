@@ -26,7 +26,7 @@ function ItemCount(props){
   }
 
     return (
-      <ListGroup xs="auto" variant="flush">
+      <ListGroup xs="auto" variant="flush" className="item-counter">
         <ListGroup.Item>
           <InputGroup className="mb-4">
             <InputGroup.Prepend
@@ -40,7 +40,8 @@ function ItemCount(props){
               placeholder="0"
               value={quantity}
               className="text-center"
-              max={stock}/>
+              max={stock}
+              readOnly/>
             <InputGroup.Append title="Sumar">
               <InputGroup.Text className="btn btn-outline-success" onClick={quantityIncrease}>
                 <Plus size={25}/>
