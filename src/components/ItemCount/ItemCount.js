@@ -8,13 +8,13 @@ function ItemCount({ stock, selectedQuantity, onChange }) {
 
   const [quantity, setQuantity] = useState(1)
 
-  const quantityIncrease = async function () {
+  const quantityIncrease = function () {
     setQuantity(quantity + 1)
       onChange(quantity + 1)
 
   }
 
-  const quantityDecrease = async function () {
+  const quantityDecrease = function () {
     setQuantity(quantity - 1)
     onChange(quantity - 1)
   }
