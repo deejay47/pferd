@@ -1,14 +1,14 @@
-import NavBar from "./components/NavBar/NavBar"
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+
+import Home from "./views/Home/Home"
+import ItemDetails from "./views/ItemDetails/ItemDetails";
 
 
 function App() {
   return (
     <div className="App">
-      
-      <NavBar></NavBar>
 
-      <ItemListContainer></ItemListContainer>
+      <Home></Home>
+      {/* <ItemDetails></ItemDetails> */}
 
     </div>
   );

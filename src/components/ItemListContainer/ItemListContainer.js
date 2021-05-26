@@ -4,9 +4,8 @@ import ItemList from "../ItemList/ItemList";
 
 import "./ItemListContainer.scss";
 
-class ItemListContainer extends React.Component {
+function ItemListContainer() {
 
-  render() {
     return (
       <Container fluid="md">
       <Row className="justify-content-md-center">
@@ -23,6 +22,5 @@ class ItemListContainer extends React.Component {
       </Container>
     );
   }
-}
 
 export default ItemListContainer;

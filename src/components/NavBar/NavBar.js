@@ -5,8 +5,7 @@ import {Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 import "./NavBar.scss";
 
-class NavBar extends React.Component {
-  render() {
+function NavBar() {
     return (
 <Navbar bg="light" expand="md" className="navBar">
   <Navbar.Brand href="#home">
@@ -31,6 +30,5 @@ class NavBar extends React.Component {
 </Navbar>
     );
   }
-}
 
 export default NavBar;
