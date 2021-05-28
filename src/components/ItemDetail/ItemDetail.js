@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Col, Alert, Spinner } from "react-bootstrap";
+import { Card, Button, Col } from "react-bootstrap";
 import ItemCount from "../ItemCount/ItemCount";
+import Loading from "../Loading/Loading"
 
 import "./ItemDetail.scss";
 
@@ -24,7 +25,7 @@ function ItemDetail(props) {
           title: "producto 1",
           price: 1700,
           stock: 6,
-          pictureUrl: "img/products/deflector_xm.jpeg",
+          pictureUrl: "/img/products/deflector_xm.jpeg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
         }
@@ -46,15 +47,7 @@ function ItemDetail(props) {
   return (
     <Col>
       {loading ? (
-        <Alert key="1" variant="light" className="text-center">
-          <Alert.Heading>Cargando información del producto...</Alert.Heading>
-          <p>
-            Aguarde por favor
-        </p>
-        <br></br>
-        <Spinner animation="border" variant="danger" role="status">
-          </Spinner>
-        </Alert>
+        <Loading></Loading>
       ) : (
         <Card className="text-center">
           <Card.Img className="detail-img" variant="top" src={product.pictureUrl} />

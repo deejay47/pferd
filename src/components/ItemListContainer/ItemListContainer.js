@@ -6,21 +6,19 @@ import "./ItemListContainer.scss";
 
 function ItemListContainer() {
 
-    return (
-      <Container fluid="md">
+  return (
+    <Container fluid="md">
       <Row className="justify-content-md-center">
 
         <Row>
           <Col >
-            <h2>Listado de productos</h2>
+            <ItemList></ItemList>
           </Col>
         </Row>
 
-       <ItemList></ItemList>
-
       </Row>
-      </Container>
-    );
-  }
+    </Container>
+  );
+}
 
 export default ItemListContainer;

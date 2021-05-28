@@ -4,6 +4,7 @@ import CartWidget from '../CartWidget/CartWidget'
 import {Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 import "./NavBar.scss";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     return (
@@ -14,7 +15,7 @@ function NavBar() {
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
     <Nav className="mr-auto">
-      <Nav.Link href="#home">Inicio</Nav.Link>
+      <Link to="/">Inicio</Link>
       <Nav.Link href="#link">Distribuidores</Nav.Link>
       <NavDropdown title="Categorías" id="basic-nav-dropdown">
         <NavDropdown.Item href="#action/3.1">Deflectores</NavDropdown.Item>

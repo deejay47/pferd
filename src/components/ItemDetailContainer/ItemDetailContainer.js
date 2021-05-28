@@ -4,19 +4,9 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 
 import "./ItemDetailContainer.scss";
 
-function ItemDetailContainer() {
+function ItemDetailContainer(props) {
 
   const [item, setItem] = useState(null);
-
-  let product = {
-      id: 1,
-      title: "producto 100",
-      price: 1400,
-      stock: 12,
-      pictureUrl: "https://http2.mlstatic.com/D_NQ_NP_2X_973872-MLA42541033919_072020-F.webp",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
-    };
 
   useEffect(() => {
     const promise = new Promise((resolve) => {
@@ -52,7 +42,7 @@ function ItemDetailContainer() {
 
         <Row>
           <Col >
-            <ItemDetail item={product}></ItemDetail>
+            <ItemDetail item={item}></ItemDetail>
           </Col>
         </Row>
 
