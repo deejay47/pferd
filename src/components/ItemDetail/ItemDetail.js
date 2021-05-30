@@ -13,7 +13,7 @@ function ItemDetail(props) {
   };
 
   return (
-    <Col>
+    <Col sm="9">
       <Card className="text-center fade-in">
         <Card.Img
           className="detail-img"
