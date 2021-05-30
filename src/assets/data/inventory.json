@@ -1,0 +1,183 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "category_id": 1,
+        "code": "DEF001",
+        "title": "Deflector S",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3000,
+        "pictureUrl": "/img/products/deflector_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 2,
+        "category_id": 1,
+        "code": "DEF002",
+        "title": "Deflector M",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3000,
+        "pictureUrl": "/img/products/deflector_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 3,
+        "category_id": 1,
+        "code": "DEF003",
+        "title": "Deflector L",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3000,
+        "pictureUrl": "/img/products/deflector_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 4,
+        "category_id": 1,
+        "code": "DEF004",
+        "title": "Deflector XL",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3000,
+        "pictureUrl": "/img/products/deflector_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 5,
+        "category_id": 1,
+        "code": "DEF005",
+        "title": "Deflector STD S",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3500,
+        "pictureUrl": "/img/products/deflector_std.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 6,
+        "category_id": 1,
+        "code": "DEF006",
+        "title": "Deflector STD L",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 3500,
+        "pictureUrl": "/img/products/deflector_std.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 7,
+        "category_id": 2,
+        "code": "SAV001",
+        "title": "Savage CB250",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 9500,
+        "pictureUrl": "/img/products/savage_cb250.jpg",
+        "stock": 10
+      },
+      {
+        "id": 8,
+        "category_id": 2,
+        "code": "SAV002",
+        "title": "Savage XRE300",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 10000,
+        "pictureUrl": "/img/products/savage_xre300.jpg",
+        "stock": 10
+      },
+      {
+        "id": 9,
+        "category_id": 2,
+        "code": "SAV003",
+        "title": "Savage NX400",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 9800,
+        "pictureUrl": "/img/products/savage_nx4.jpg",
+        "stock": 10
+      },
+      {
+        "id": 10,
+        "category_id": 3,
+        "code": "PAR001",
+        "title": "Parabrisas XM",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6500,
+        "pictureUrl": "/img/products/parabrisas_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 11,
+        "category_id": 3,
+        "code": "PAR002",
+        "title": "Parabrisas M",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6350,
+        "pictureUrl": "/img/products/parabrisas_xm.jpeg",
+        "stock": 10
+      },
+      {
+        "id": 12,
+        "category_id": 3,
+        "code": "PAR003",
+        "title": "Parabrisas XM Fume",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6500,
+        "pictureUrl": "/img/products/parabrisas_xmf.jpg",
+        "stock": 10
+      },
+      {
+        "id": 13,
+        "category_id": 3,
+        "code": "PAR004",
+        "title": "Parabrisas M Fume",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6350,
+        "pictureUrl": "/img/products/parabrisas_xmf.jpg",
+        "stock": 10
+      },
+      {
+        "id": 14,
+        "category_id": 4,
+        "code": "PER001",
+        "title": "Protector de Caliper",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 2800,
+        "pictureUrl": "/img/products/perimetral_caliper.jpg",
+        "stock": 10
+      },
+      {
+        "id": 15,
+        "category_id": 4,
+        "code": "PER002",
+        "title": "CubreCárter TRK502",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6580,
+        "pictureUrl": "/img/products/perimetral_cubrecarter.jpg",
+        "stock": 10
+      }
+      ,
+      {
+        "id": 16,
+        "category_id": 4,
+        "code": "PER002",
+        "title": "Protector Faro XTZ250 ADV",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
+        "price": 6580,
+        "pictureUrl": "/img/products/perimetral_protector_faro.jpg",
+        "stock": 10
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Deflectores"
+      },
+      {
+        "id": 2,
+        "name": "Sistemas SAVAGE"
+      },
+      {
+        "id": 3,
+        "name": "Parabrisas"
+      },
+      {
+        "id": 4,
+        "name": "Perimetrales"
+      }
+    ]
+  }
