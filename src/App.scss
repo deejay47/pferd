@@ -18,5 +18,11 @@
   }
 
   .home-view, .item-details-view, .category-items-view, .not-found{
+    padding-top: 1%;
     min-height: 82vh;
   }
+
+  body {
+    background: linear-gradient(#ffffff, #acacac);
+  }
+  

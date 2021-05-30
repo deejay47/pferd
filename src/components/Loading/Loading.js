@@ -9,7 +9,7 @@ function Loading() {
         <Container fluid="md" className="loading">
             <Row className="justify-content-md-center">
 
-                <Alert key="1" variant="light" className="text-center">
+                <Alert key="1" variant="light" className="text-center loading-card">
                     <Alert.Heading>Cargando</Alert.Heading>
                     <br/>
                     <Spinner animation="border" variant="danger" role="status">
