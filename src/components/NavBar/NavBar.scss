@@ -5,3 +5,13 @@
 .navbar-brand{
     padding-left: 10%;
 }
+
+.active{
+font-size: 1.2rem;
+background-color: #ca2026bd !important;
+
+}
+
+#cart-dropdown.dropdown-toggle::after{
+display: none;
+}

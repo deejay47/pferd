@@ -1,35 +1,84 @@
-import React from "react";
-import Logo from '../../assets/img/logos/logo.png'
-import CartWidget from '../CartWidget/CartWidget'
-import {Nav, NavDropdown, Navbar } from "react-bootstrap";
+import { React, useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { Nav, NavDropdown, Navbar, Row } from "react-bootstrap";
+import Logo from "../../assets/img/logos/logo.png";
+import CartWidget from "../CartWidget/CartWidget";
+import Loading from "../Loading/Loading";
+import Inventory from "../../assets/data/inventory.json";
 
 import "./NavBar.scss";
-import { Link } from "react-router-dom";
 
 function NavBar() {
-    return (
-<Navbar bg="light" expand="md" className="navBar">
-  <Navbar.Brand href="#home">
-    <img className='brand-logo' src={Logo} alt="Pferd Logo" />
-    </Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
-      <Link to="/">Inicio</Link>
-      <Nav.Link href="#link">Distribuidores</Nav.Link>
-      <NavDropdown title="Categorías" id="basic-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Deflectores</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Sistema Savage</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">CubreCárter</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Perimetrales</NavDropdown.Item>
-      </NavDropdown>
-      <Nav.Link><CartWidget className="float-right"></CartWidget></Nav.Link>
-    </Nav>
-    
-  </Navbar.Collapse>
-</Navbar>
-    );
-  }
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState(null);
+  const [cart] = useState(null);
+
+
+  useEffect(() => {
+    const getCategories = new Promise((resolve) => {
+      setTimeout(() => resolve(Inventory.categories), 1000);
+    });
+
+    getCategories.then((res) => {
+      setCategories(res);
+      setLoading(false);
+    });
+  }, []);
+
+  return (
+    <Row className="justify-content-md-center fade-in">
+      <Navbar bg="light" expand="md" className="navBar">
+        <Navbar.Brand>
+          <Nav.Link as={Link} to="/">
+            <img className="brand-logo" src={Logo} alt="Pferd Logo" />
+          </Nav.Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link as={Link} to="/distribuidores">
+              Distribuidores
+            </Nav.Link>
+            <NavDropdown title="Categorías" id="basic-nav-dropdown">
+              {loading ? (
+                <Loading></Loading>
+              ) : 
+                categories != null ? (
+                  categories.map((category) => 
+                  <NavDropdown.Item key={category.id} as={NavLink} to={"/category/" + category.id} activeClassName="active">
+                    {category.name}
+                  </NavDropdown.Item>)
+                ) : (
+                  <NavDropdown.Item as={Link} to="/">
+                    Error al obtener categorías
+                  </NavDropdown.Item>
+                )}
+            </NavDropdown>
+
+            <NavDropdown title={<CartWidget className="float-right"></CartWidget>} id="cart-dropdown">
+             
+              {loading ? (
+                <Loading></Loading>
+              ) : 
+                cart != null ? (
+                  cart.map((cartItem) => 
+                  <NavDropdown.Item key={cartItem.id}>
+                    {cartItem.name}
+                  </NavDropdown.Item>
+                  )
+                ) : (
+                  <NavDropdown.Item as={Link}  to="/">
+                    Coming soon... 
+                  </NavDropdown.Item>
+                )}
+
+            </NavDropdown>
+
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Row>
+  );
+}
 
 export default NavBar;
