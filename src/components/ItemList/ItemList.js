@@ -1,67 +1,54 @@
 import { React, useState, useEffect } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Item from "../Item/Item";
+import Loading from "../Loading/Loading";
+import Inventory from "../../assets/data/inventory.json";
+import NotFound from "../../views/NotFound/NotFound"
+import { useParams } from "react-router-dom";
 
 import "./ItemList.scss";
 
 function ItemList() {
+  const { id } = useParams();
   const [items, setItems] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const promise = new Promise((resolve) => {
-      setTimeout(function () {
-        let products = [
-          {
-            id: 1,
-            title: "producto 1",
-            price: 1700,
-            stock: 12,
-            pictureUrl: "img/products/deflector_xm.jpeg",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
-          },
-          {
-            id: 2,
-            title: "producto 2",
-            price: 2000,
-            stock: 16,
-            pictureUrl:
-            "img/products/deflector_xm.jpeg",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
-          },
-          {
-            id: 3,
-            title: "producto 3",
-            price: 1100,
-            stock: 0,
-            pictureUrl:
-            "img/products/deflector_xm.jpeg",
-            description:
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum nisi in felis ultrices lacinia.",
-          },
-        ];
-        resolve(products);
-      }, 2000);
+    const getItems = new Promise((resolve) => {
+      setTimeout(() => resolve(Inventory.products), 1000);
     });
 
-    promise.then(
-      function (res) {
-        setItems(res);
-      },
-      function (err) {
-        console.log("error: " + err);
-      }
-    );
-  }, []);
+    id
+      ? getItems.then((res) => {
+          let allItems = res;
+          let filteredItems = allItems.filter(
+            (item) => Number(item.category_id) === Number(id)
+          );
+          setItems(filteredItems);
+          setLoading(false);
+        })
+      : getItems.then((res) => {
+          setItems(res);
+          setLoading(false);
+        });
+  }, [id]);
 
   return (
     <Container fluid="md">
-      <Row className="justify-content-md-center">
-        {items?.map((item) => (
-          <Item key={item.id} item={item}></Item>
-        ))}
-      </Row>
+      {loading ? (
+        <Loading></Loading>
+      ) : (
+        <Row className="justify-content-md-center fade-in">
+          {items[0]
+            ? items?.map((item) => 
+            <Col key={item.id} md="4">
+                  <Item item={item}></Item>
+            </Col>
+            )
+            : <NotFound></NotFound>
+          }
+        </Row>
+      )}
     </Container>
   );
 }

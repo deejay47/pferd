@@ -1,8 +1,8 @@
 import ItemListContainer from "../../components/ItemListContainer/ItemListContainer"
 
-function Home() {
+function CategoryItems() {
   return (
-    <div className="home-view">
+    <div className="category-items-view">
       
       <ItemListContainer></ItemListContainer>
 
@@ -10,4 +10,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default CategoryItems;
