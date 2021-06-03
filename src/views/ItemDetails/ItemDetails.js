@@ -7,7 +7,7 @@ function ItemDetails() {
 
   return (
 
-    <div id="item-details-view">
+    <div className="item-details-view">
 
       <ItemDetailContainer></ItemDetailContainer>
 
