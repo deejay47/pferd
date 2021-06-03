@@ -6,12 +6,11 @@ import "./ItemCount.scss";
 
 function ItemCount({ stock, selectedQuantity, onChange }) {
 
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(selectedQuantity)
 
   const quantityIncrease = function () {
     setQuantity(quantity + 1)
       onChange(quantity + 1)
-
   }
 
   const quantityDecrease = function () {
@@ -24,15 +23,14 @@ function ItemCount({ stock, selectedQuantity, onChange }) {
       <ListGroup.Item>
         <InputGroup className="mb-4">
           <InputGroup.Prepend
-            title={quantity <= 1 ? "¬¬" : "Quitar una unidad"}>
-            <Button variant="outline-danger" onClick={quantityDecrease} disabled={quantity <= 1}>
+            title={quantity < 1 ? "¬¬" : "Quitar una unidad"}>
+            <Button variant="outline-danger" onClick={quantityDecrease} disabled={quantity < 1}>
               <Dash size={25} />
             </Button>
 
           </InputGroup.Prepend>
           <FormControl
             aria-label="Items Quantity"
-            placeholder="1"
             value={quantity}
             className="text-center"
             max={stock}
