@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { Card, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
+import { useCart } from "../../contexts/cartContext"
 
 import "./ItemDetail.scss";
 
 function ItemDetail(props) {
+
+  const cart = useCart()
 
   const  [selectedQuantity, setSelectedQuantity] = useState(0)
   const  [checkoutReady, setCheckoutReady] = useState(false)
@@ -15,15 +18,15 @@ function ItemDetail(props) {
   };
 
   const addToCart = () => {
-    console.log('Agregando al carrito ' + selectedQuantity + ' unidades de ' + props.item.title);
+    cart.addItem({item: props.item, quantity: selectedQuantity})
     setCheckoutReady(true)
   };
-
 
   const cartCheckout = () => {
     console.log('Redirigiendo a cart');
   };
 
+  console.log(cart.cart)
 
   return (
     <Col sm="9">
