@@ -12,11 +12,18 @@ import ItemDetails from "./views/ItemDetails/ItemDetails"
 import NotFound from "./views/NotFound/NotFound"
 import Cart from './views/Cart/Cart'
 
+/* Contexts */
+import {CartProvider} from "./contexts/cartContext"
+
 import './App.scss'
 
 function App() {
-  return (
-    <div className="App">
+
+  return (    
+  
+  <div className="App">
+
+    <CartProvider>
       <BrowserRouter>
         <NavBar></NavBar>
         <Switch>
@@ -37,10 +44,11 @@ function App() {
           </Route>
         </Switch>
         <Footer></Footer>
-
       </BrowserRouter>
-
-    </div>
+ 
+    </CartProvider> 
+    
+      </div>
   );
 }
 

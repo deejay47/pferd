@@ -5,14 +5,16 @@ import Logo from "../../assets/img/logos/logo.png";
 import CartWidget from "../CartWidget/CartWidget";
 import Loading from "../Loading/Loading";
 import Inventory from "../../assets/data/inventory.json";
+import { useCart } from "../../contexts/cartContext"
+
 
 import "./NavBar.scss";
 
 function NavBar() {
+
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState(null);
-  const [cart] = useState(null);
-
+  const cart = useCart()
 
   useEffect(() => {
     const getCategories = new Promise((resolve) => {
@@ -60,15 +62,15 @@ function NavBar() {
               {loading ? (
                 <Loading></Loading>
               ) : 
-                cart != null ? (
-                  cart.map((cartItem) => 
+              cart.items !== undefined ? (
+                  cart.items.map((cartItem) => 
                   <NavDropdown.Item key={cartItem.id}>
                     {cartItem.name}
                   </NavDropdown.Item>
                   )
                 ) : (
-                  <NavDropdown.Item as={Link}  to="/">
-                    Coming soon... 
+                  <NavDropdown.Item as={Link}  to="/cart">
+                    Items en carrito: {cart.cart.items.length}
                   </NavDropdown.Item>
                 )}
 
