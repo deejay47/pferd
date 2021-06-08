@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
       });
 
       cartItems = newCartProducts
-      
+
     }
 
     // Calcular totalItems y totalPrice
@@ -58,7 +58,7 @@ export const CartProvider = ({ children }) => {
   const removeItem = (id) => {
 
     let cartItems = [...cart.items]
-    newCartItems = cartItems.filter(cartItem => cartItem.item.id === id)
+    let newCartItems = cartItems.filter(cartItem => cartItem.item.id === id)
     setCart({
       ...cart,
       items: newCartItems
