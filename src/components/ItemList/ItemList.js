@@ -5,6 +5,7 @@ import Loading from "../Loading/Loading";
 import Inventory from "../../assets/data/inventory.json";
 import NotFound from "../../views/NotFound/NotFound"
 import { useParams } from "react-router-dom";
+import { getFirestore } from '../../firebase'
 
 import "./ItemList.scss";
 
@@ -14,7 +15,24 @@ function ItemList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+
+
+    
+    // const db = getFirestore()
+
+    // const itemsCollection = db.collection('items')
+
+    // itemsCollection.get().then((snapshot) => {
+    //   console.log(snapshot.docs.map(doc=> doc.data()))
+    // })
+    
+    // itemsCollection.doc('0v0TxB5U9tQYL0uksBVL')
+
+    //   itemsCollection.get().then(item => {
+    //     console.log(item)
+    //   })
+
+
     const getItems = new Promise((resolve) => {
       setTimeout(() => resolve(Inventory.products), 1000);
     });
@@ -32,6 +50,9 @@ function ItemList() {
           setItems(res);
           setLoading(false);
         });
+
+
+
   }, [id]);
 
   return (
