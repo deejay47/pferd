@@ -16,32 +16,26 @@ export const CartProvider = ({ children }) => {
    */
   const addItem = (item) => {
 
+    console.log(item)
+
     let cartItems = [...cart.items];
     let totalPrice = 0;
     let totalItems = 0;
 
-    if (cartItems.length === 0) {
-      console.log('cart vacio, agregando 1er producto')
+    //Chequear si el producto se encontraba en el cart
+    if (cartItems.length === 0 || isInCart(item.item.id) === false) {
       cartItems.push(item)
     } else {
       const newCartProducts = cartItems.map(cartItem => {
         if (isInCart(item.item.id)) {
-          console.log('estaba en el cart')
+          console.log(cartItem)
           return { ...cartItem, quantity: (item.quantity + cartItem.quantity) }
         }
-        else {
-          console.log('NO estaba en el cart')
-          //BUG!
-          return cartItem
-        }
       });
-
       cartItems = newCartProducts
-
     }
 
-    // Calcular totalItems y totalPrice
-
+    //Actualizar sumatorias
     cartItems.forEach((cartItem) => {
       totalPrice = cartItem.quantity * cartItem.item.price + totalPrice;
       totalItems = cartItem.quantity + totalItems;
