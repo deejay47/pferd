@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./Item.scss";
 
 function Item(props) {
+  const numberFormat = new Intl.NumberFormat("de-DE");
   return (
     <Card className="text-center">
       <Card.Body>
@@ -24,7 +25,7 @@ function Item(props) {
         </Card.Title>
         <Card.Title>{props.item.title}</Card.Title>
         <Card.Text>{props.item.description}</Card.Text>
-        <p className="price-tag">$ {props.item.price}</p>
+        <p className="price-tag">$ {numberFormat.format(props.item.price)}</p>
       </Card.Body>
     </Card>
   );
