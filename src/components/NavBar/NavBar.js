@@ -4,25 +4,22 @@ import { Nav, NavDropdown, Navbar, Row } from "react-bootstrap";
 import Logo from "../../assets/img/logos/logo.png";
 import CartWidget from "../CartWidget/CartWidget";
 import Loading from "../Loading/Loading";
-import Inventory from "../../assets/data/inventory.json";
-import { useCart } from "../../contexts/cartContext"
-
+import { useCart } from "../../contexts/cartContext";
+import { getFirestore } from "../../firebase/index";
 
 import "./NavBar.scss";
 
 function NavBar() {
-
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState(null);
-  const cart = useCart()
+  const cart = useCart();
 
   useEffect(() => {
-    const getCategories = new Promise((resolve) => {
-      setTimeout(() => resolve(Inventory.categories), 1000);
-    });
+    const db = getFirestore();
+    let categoriesCollection = db.collection("categories");
 
-    getCategories.then((res) => {
-      setCategories(res);
+    categoriesCollection.get().then((snapshot) => {
+      setCategories(snapshot.docs.map((doc) => doc.data()));
       setLoading(false);
     });
   }, []);
@@ -44,24 +41,37 @@ function NavBar() {
             <NavDropdown title="Categorías" id="basic-nav-dropdown">
               {loading ? (
                 <Loading></Loading>
-              ) : 
-                categories != null ? (
-                  categories.map((category) => 
-                  <NavDropdown.Item key={category.id} as={NavLink} to={"/category/" + category.id} activeClassName="active">
+              ) : categories != null ? (
+                categories.map((category) => (
+                  <NavDropdown.Item
+                    key={category.id}
+                    as={NavLink}
+                    to={"/category/" + category.id}
+                    activeClassName="active"
+                  >
                     {category.name}
-                  </NavDropdown.Item>)
-                ) : (
-                  <NavDropdown.Item as={Link} to="/">
-                    Error al obtener categorías
                   </NavDropdown.Item>
-                )}
+                ))
+              ) : (
+                <NavDropdown.Item as={Link} to="/">
+                  Error al obtener categorías
+                </NavDropdown.Item>
+              )}
             </NavDropdown>
             {cart.cart.items.length === 0 ? (
               ""
-            ):(
-              <Nav.Link id="cart-widget" title="Ver carrito" as={Link} to="/cart">
-              <CartWidget className="float-right" quantity={cart.cart.totalItems}></CartWidget>
-            </Nav.Link>
+            ) : (
+              <Nav.Link
+                id="cart-widget"
+                title="Ver carrito"
+                as={Link}
+                to="/cart"
+              >
+                <CartWidget
+                  className="float-right"
+                  quantity={cart.cart.totalItems}
+                ></CartWidget>
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

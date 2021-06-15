@@ -22,7 +22,7 @@ function CartItem(props) {
   return (
     <li className="cart_item clearfix" key={props.item.item.id}>
       <div className="cart_item_image">
-        <img src={props.item.item.pictureUrl} alt="" />
+        <img src={"/img/products/" + props.item.item.pictureUrl} alt="" />
       </div>
       <div className="cart_item_info d-flex flex-md-row justify-content-between">
         <div className="cart_item_name cart_info_col">
@@ -71,7 +71,6 @@ function CartItem(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-
     </li>
   );
 }
