@@ -12,6 +12,8 @@ background-color: #ca2026bd !important;
 
 }
 
-#cart-dropdown.dropdown-toggle::after{
-display: none;
+.badge{
+    background-color: #ca2026bd;
+    transform: translateY(-11px) translateX(-1px);
+
 }

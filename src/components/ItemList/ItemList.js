@@ -14,7 +14,7 @@ function ItemList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
+
     const getItems = new Promise((resolve) => {
       setTimeout(() => resolve(Inventory.products), 1000);
     });
@@ -32,6 +32,9 @@ function ItemList() {
           setItems(res);
           setLoading(false);
         });
+
+
+
   }, [id]);
 
   return (

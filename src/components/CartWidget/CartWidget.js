@@ -1,14 +1,16 @@
 import React from "react";
 import { Cart } from "react-bootstrap-icons";
-import { Button } from "react-bootstrap";
+import { Badge } from "react-bootstrap";
 
 import "./CartWidget.scss";
 
-function CartWidget() {
+function CartWidget(props) {
     return (
-        <Button size="sm" variant="outline-dark">
-          <Cart size={25}/>
-        </Button>
+      <div>
+        <Cart size={30}></Cart>
+        <Badge variant="warning">{props.quantity}</Badge>
+      </div>
+      
     );
   }
 

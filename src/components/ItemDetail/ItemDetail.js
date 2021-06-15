@@ -26,7 +26,7 @@ function ItemDetail(props) {
     console.log('Redirigiendo a cart');
   };
 
-  console.log(cart.cart)
+  const numberFormat = new Intl.NumberFormat("de-DE");
 
   return (
     <Col sm="9">
@@ -41,7 +41,7 @@ function ItemDetail(props) {
             <h2>{props.item.title}</h2>
           </Card.Title>
           <Card.Text className="description-text">{props.item.description}</Card.Text>
-          <p className="price-tag">$ {props.item.price}</p>
+          <p className="price-tag">$ {numberFormat.format(props.item.price)}</p>
 
 
           {checkoutReady ? (
@@ -50,7 +50,7 @@ function ItemDetail(props) {
             disabled={props.item.stock === 0}
             onClick={cartCheckout}
           >
-           Finalizar compra ({selectedQuantity} productos)
+           Producto agregado! Ver mi carrito
           </Button>
            ):(
             <div className="item-count" title={selectedQuantity === 0 ? "Seleccione cantidad válida" : "Agregar al carrito"}>

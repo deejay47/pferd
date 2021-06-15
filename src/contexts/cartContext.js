@@ -7,7 +7,6 @@ export const useCart = () => useContext(CartContext);
 const CART_INIT = { items: [], totalPrice: 0, totalItems: 0 };
 
 export const CartProvider = ({ children }) => {
-
   const [cart, setCart] = useState(CART_INIT);
 
   /** Agregar item al cart
@@ -15,27 +14,23 @@ export const CartProvider = ({ children }) => {
    * @param item
    */
   const addItem = (item) => {
-
-    console.log(item)
-
     let cartItems = [...cart.items];
-    let totalPrice = 0;
-    let totalItems = 0;
 
     //Chequear si el producto se encontraba en el cart
     if (cartItems.length === 0 || isInCart(item.item.id) === false) {
-      cartItems.push(item)
+      cartItems.push(item);
     } else {
-      const newCartProducts = cartItems.map(cartItem => {
-        if (isInCart(item.item.id)) {
-          console.log(cartItem)
-          return { ...cartItem, quantity: (item.quantity + cartItem.quantity) }
-        }
+      const newCartProducts = cartItems.map((cartItem) => {
+        return { ...cartItem, quantity: item.quantity + cartItem.quantity };
       });
-      cartItems = newCartProducts
+      cartItems = newCartProducts;
     }
 
     //Actualizar sumatorias
+
+    let totalPrice = 0;
+    let totalItems = 0;
+
     cartItems.forEach((cartItem) => {
       totalPrice = cartItem.quantity * cartItem.item.price + totalPrice;
       totalItems = cartItem.quantity + totalItems;
@@ -50,14 +45,24 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeItem = (id) => {
+    let cartItems = [...cart.items];
 
-    let cartItems = [...cart.items]
-    let newCartItems = cartItems.filter(cartItem => cartItem.item.id === id)
+    let newCartItems = cartItems.filter((cartItem) => cartItem.item.id !== id);
+
+    let totalPrice = 0;
+    let totalItems = 0;
+
+    newCartItems.forEach((cartItem) => {
+      totalPrice = cartItem.quantity * cartItem.item.price + totalPrice;
+      totalItems = cartItem.quantity + totalItems;
+    });
+
     setCart({
       ...cart,
-      items: newCartItems
-    })
-
+      items: newCartItems,
+      totalPrice: totalPrice,
+      totalItems: totalItems,
+    });
   };
 
   /** Vaciar cart
