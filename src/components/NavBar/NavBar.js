@@ -56,26 +56,13 @@ function NavBar() {
                   </NavDropdown.Item>
                 )}
             </NavDropdown>
-
-            <NavDropdown title={<CartWidget className="float-right"></CartWidget>} id="cart-dropdown">
-             
-              {loading ? (
-                <Loading></Loading>
-              ) : 
-              cart.items !== undefined ? (
-                  cart.items.map((cartItem) => 
-                  <NavDropdown.Item key={cartItem.id}>
-                    {cartItem.name}
-                  </NavDropdown.Item>
-                  )
-                ) : (
-                  <NavDropdown.Item as={Link}  to="/cart">
-                    Items en carrito: {cart.cart.items.length}
-                  </NavDropdown.Item>
-                )}
-
-            </NavDropdown>
-
+            {cart.cart.items.length === 0 ? (
+              ""
+            ):(
+              <Nav.Link id="cart-widget" title="Ver carrito" as={Link} to="/cart">
+              <CartWidget className="float-right" quantity={cart.cart.totalItems}></CartWidget>
+            </Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -1,17 +1,10 @@
-import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import React from "react";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
 
 import "./Item.scss";
 
 function Item(props) {
-  const [quantity, setQuantity] = useState(Number);
-
-  const quantityUpdate = (selectedQuantity) => {
-    setQuantity(selectedQuantity);
-    console.log(selectedQuantity);
-  };
 
   return (
       <Card className="text-center">
