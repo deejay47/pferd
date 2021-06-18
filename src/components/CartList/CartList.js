@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
 
 import "./CartList.scss";
-import { Trash } from "react-bootstrap-icons";
+import { Trash, ChevronDoubleRight, ChevronDoubleLeft} from "react-bootstrap-icons";
 
 function CartList() {
   const cart = useCart();
@@ -35,7 +35,7 @@ function CartList() {
               <div className="row">
                 <div className="col-lg-10 offset-lg-1">
                   <div className="cart_container fade-in">
-                    <div className="cart_title">Detalle de tu compra</div>
+                    <div className="cart_title">Tu carrito</div>
                     <div className="cart_items">
                       <ul className="cart_list">
                         {cart.cart.items[0] ? (
@@ -78,17 +78,17 @@ function CartList() {
                         variant="outline-primary"
                         className="button shop-button"
                       >
-                        Continuar comprando
+                       <ChevronDoubleLeft size="25"></ChevronDoubleLeft> Continuar comprando
                       </Button>
 
                       <Button
                         type="button"
                         as={Link}
                         to="/checkout"
-                        variant="outline-dark"
+                        variant="outline-success"
                         className="button"
                       >
-                        Proceder al pago
+                        Finalizar compra<ChevronDoubleRight size="25"></ChevronDoubleRight>
                       </Button>
                     </div>
                   </div>
