@@ -1,18 +1,25 @@
 # Pferd Store
-Pferd eCommerce for ReactJS Course from Coderhouse by Darío Javier Romero
 
-## Getting Started with Create React App
+Pferd eCommerce project for ReactJS Course from Coderhouse by Darío Javier Romero
+
+
+## Made with Create React App 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+  
+## Installing project dependences
 
-In the project directory, you can run:
+In the project directory, run:
 
-### `npm start`
+`npm install`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running the project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+To run the app in the development mode, in the project directory, run:
+
+`npm start`
+
+* Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* The page will reload if you make edits.\
+* You will also see any lint errors in the console.

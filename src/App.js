@@ -16,6 +16,7 @@ import Cart from './views/Cart/Cart'
 import {CartProvider} from "./contexts/cartContext"
 
 import './App.scss'
+import Checkout from './views/Checkout/Checkout'
 
 function App() {
 
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route exact path="/cart">
             <Cart></Cart>
+          </Route>
+          <Route exact path="/checkout">
+            <Checkout></Checkout>
           </Route>
           <Route>
             <NotFound></NotFound>

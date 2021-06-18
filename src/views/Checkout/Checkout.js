@@ -1,17 +1,17 @@
 import React from "react";
 import { Container, Row} from "react-bootstrap";
-import CartList from "../../components/CartList/CartList"
+import CheckoutForm from "../../components/CheckoutForm/CheckoutForm"
 
-import './Cart.scss'
+import './Checkout.scss'
 
-function Cart() {
+function Checkout() {
   return (
-    <div className="cart-view">
+    <div className="checkout-view">
       
       <Container fluid="md" className="cart">
             <Row className="justify-content-md-center">
 
-            <CartList></CartList>
+            <CheckoutForm></CheckoutForm>
 
             </Row>
         </Container>
@@ -20,4 +20,4 @@ function Cart() {
   );
 }
 
-export default Cart
+export default Checkout
