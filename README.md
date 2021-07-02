@@ -32,7 +32,7 @@ To run the app in the development mode, in the project directory, run:
 * Every product can be added to cart from the item detail view (item/:itemId).
 * Every product category can be accesed and navigated (/category/:categoryId) from the dropdown menu in the navbar. 
 * To add any product to the cart, it needs to be in stock (stock > 0).
-* The cart only appears when there are at leas 1 item on it.
+* The cart only appears when there are at least 1 item on it.
 * Cart page (/cart) provides support to delete one or all cart items and also to proceed to checkout.
 
 ### Checkout / Payment
@@ -56,7 +56,7 @@ To run the app in the development mode, in the project directory, run:
 * I did the best for making the website mobile Friendly, but it's not the best viewport to run it.
 * That's why I strongly recommend to access the app via desktop browser.
 * There is a live instance of the main branch at [Firebase](https://pferd-store.web.app/)
-* The project is in development instance, that's why a TODO.md file exists on the repository, you can check it out to know what's next, and if you feel so, let me know your thoughts on [my e-mail](mailto://dario.javier.romero@gmail.com/) ;)
+* The project is in development instance, that's why a TODO.md file exists on the repository, you can check it out to know what's next, and if you feel so, let me know your thoughts on [my e-mail](mailto:dario.javier.romero@gmail.com) ;)
 
 > Thanks!
 This was a very fun start for a project, and I hope that i can keep it going!
