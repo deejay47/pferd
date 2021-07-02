@@ -8,7 +8,7 @@ const CART_INIT = { items: [], totalPrice: 0, totalItems: 0 };
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) !== undefined
+    JSON.parse(localStorage.getItem("cart"))
       ? JSON.parse(localStorage.getItem("cart"))
       : CART_INIT
   );
