@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
@@ -7,7 +7,20 @@ export const useCart = () => useContext(CartContext);
 const CART_INIT = { items: [], totalPrice: 0, totalItems: 0 };
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(CART_INIT);
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) !== undefined
+      ? JSON.parse(localStorage.getItem("cart"))
+      : CART_INIT
+  );
+
+  useEffect(() => {
+    sessionStorage();
+    // eslint-disable-next-line
+  }, [cart]);
+
+  const sessionStorage = () => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  };
 
   /** Agregar item al cart
    *
@@ -42,6 +55,7 @@ export const CartProvider = ({ children }) => {
       totalPrice: totalPrice,
       totalItems: totalItems,
     });
+    sessionStorage();
   };
 
   const removeItem = (id) => {
@@ -63,6 +77,7 @@ export const CartProvider = ({ children }) => {
       totalPrice: totalPrice,
       totalItems: totalItems,
     });
+    sessionStorage();
   };
 
   /** Vaciar cart
@@ -70,6 +85,7 @@ export const CartProvider = ({ children }) => {
    */
   const clear = () => {
     setCart(CART_INIT);
+    localStorage.clear();
   };
 
   /** Chequear si el producto ya fué agregado al cart
