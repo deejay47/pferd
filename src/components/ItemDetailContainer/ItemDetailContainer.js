@@ -16,7 +16,7 @@ function ItemDetailContainer() {
   useEffect(() => {
     const db = getFirestore();
     const itemsCollection = db.collection("items");
-
+    /* Validar si se recibe el id para mostrar el detalle de un ítem */
     id
       ? itemsCollection.get().then((snapshot) => {
           let allItems = snapshot.docs.map((doc) => doc.data());
@@ -30,7 +30,7 @@ function ItemDetailContainer() {
   }, [id]);
 
   return (
-    <Container fluid="md">
+    <Container className="item-detail-container" fluid="md">
       {loading ? (
         <Loading></Loading>
       ) : (

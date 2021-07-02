@@ -35,10 +35,13 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/distribuidores">
+          <Nav.Link as={Link} to="/resellers">
               Distribuidores
             </Nav.Link>
-            <NavDropdown title="Categorías" id="basic-nav-dropdown">
+            <Nav.Link as={Link} to="/about">
+              Quienes somos
+            </Nav.Link>
+            <NavDropdown title="Nuestros productos" id="basic-nav-dropdown">
               {loading ? (
                 <Loading></Loading>
               ) : categories != null ? (

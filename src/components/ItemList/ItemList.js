@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Item from "../Item/Item";
 import Loading from "../Loading/Loading";
 import NotFound from "../../views/NotFound/NotFound";
@@ -33,7 +33,7 @@ function ItemList() {
   }, [id]);
 
   return (
-    <Container fluid="md">
+    <div>
       {loading ? (
         <Loading></Loading>
       ) : (
@@ -49,7 +49,7 @@ function ItemList() {
           )}
         </Row>
       )}
-    </Container>
+    </div>
   );
 }
 
