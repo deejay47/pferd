@@ -1,12 +1,18 @@
 import { React, useState, useEffect } from "react";
-import { Container, Row, Button, Modal } from "react-bootstrap";
+import { Row, Button, Modal } from "react-bootstrap";
 import Loading from "../Loading/Loading";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/cartContext";
+import {
+  Trash,
+  ChevronDoubleRight,
+  ChevronDoubleLeft,
+} from "react-bootstrap-icons";
+import Toastr from "../Toastr/Toastr";
 
 import "./CartList.scss";
-import { Trash, ChevronDoubleRight, ChevronDoubleLeft} from "react-bootstrap-icons";
+import CheckoutStepper from "../CheckoutStepper/CheckoutStepper";
 
 function CartList() {
   const cart = useCart();
@@ -14,6 +20,8 @@ function CartList() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [deletedToastr, setDeletedToastr] = useState(false);
+  const [clearToastr, setClearToastr] = useState(false);
   const numberFormat = new Intl.NumberFormat("de-DE");
 
   useEffect(() => {
@@ -22,14 +30,49 @@ function CartList() {
 
   const emptyCart = function () {
     cart.clear();
+    setClearToastr(true);
+  };
+
+  const deleteItem = function () {
+    setDeletedToastr(true);
+  };
+
+  const toastrReset = () => {
+    setDeletedToastr(false);
+    setClearToastr(false);
   };
 
   return (
-    <Container fluid="md">
+    <div>
+      {deletedToastr ? (
+        <Toastr
+          show={deletedToastr}
+          title="Eliminado"
+          content="Producto quitado de tu carrito."
+          variant="warning"
+          delay={2000}
+          onClose={toastrReset}
+        ></Toastr>
+      ) : (
+        ""
+      )}
+      {clearToastr ? (
+        <Toastr
+          show={clearToastr}
+          title="Carrito vaciado"
+          content="Se eliminaron los productos de tu carrito."
+          variant="error"
+          delay={2500}
+          onClose={toastrReset}
+        ></Toastr>
+      ) : (
+        ""
+      )}
       {loading ? (
         <Loading></Loading>
       ) : cart.cart.items[0] ? (
         <Row className="justify-content-md-center fade-in">
+          <CheckoutStepper active={0}></CheckoutStepper>
           <div className="cart_section">
             <div className="container-fluid">
               <div className="row">
@@ -38,13 +81,15 @@ function CartList() {
                     <div className="cart_title">Tu carrito</div>
                     <div className="cart_items">
                       <ul className="cart_list">
-                        {cart.cart.items[0] ? (
-                          cart.cart.items?.map((item) => (
-                            <CartItem item={item} key={item.item.id}></CartItem>
-                          ))
-                        ) : (
-                          ""
-                        )}
+                        {cart.cart.items[0]
+                          ? cart.cart.items?.map((item) => (
+                              <CartItem
+                                item={item}
+                                key={item.item.id}
+                                onDelete={deleteItem}
+                              ></CartItem>
+                            ))
+                          : ""}
                       </ul>
                     </div>
 
@@ -57,8 +102,7 @@ function CartList() {
                           title="Vaciar carrito"
                           className="empty-button"
                         >
-                          <Trash></Trash>
-                           {" "} Vaciar carrito
+                          <Trash></Trash> Vaciar carrito
                         </Button>
 
                         <div className="order_total_title">
@@ -78,7 +122,8 @@ function CartList() {
                         variant="outline-primary"
                         className="button shop-button"
                       >
-                       <ChevronDoubleLeft size="25"></ChevronDoubleLeft> Continuar comprando
+                        <ChevronDoubleLeft size="25"></ChevronDoubleLeft>{" "}
+                        Continuar comprando
                       </Button>
 
                       <Button
@@ -88,7 +133,8 @@ function CartList() {
                         variant="outline-success"
                         className="button"
                       >
-                        Finalizar compra<ChevronDoubleRight size="25"></ChevronDoubleRight>
+                        Finalizar compra
+                        <ChevronDoubleRight size="25"></ChevronDoubleRight>
                       </Button>
                     </div>
                   </div>
@@ -114,7 +160,7 @@ function CartList() {
         </Row>
       ) : (
         <div className="empty-cart text-center fade-in">
-          <h4>Tu carrito está vacío</h4>
+          <h4>Tu carrito está vacío.</h4>
 
           <Button
             type="button"
@@ -127,7 +173,7 @@ function CartList() {
           </Button>
         </div>
       )}
-    </Container>
+    </div>
   );
 }
 

@@ -27,3 +27,25 @@
 ## V 0.1.5
 
 * Routing
+
+## V 0.1.6
+
+* Cart context
+
+# V 0.1.7
+
+* Cart view
+
+# V 0.1.8 
+
+* Firebase
+
+# V 0.1.9 
+
+* Creación de órdenes
+
+# V 1.0
+
+* Proceso de pago
+* Mobile friendly
+* Deploy en firebase

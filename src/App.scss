@@ -1,6 +1,6 @@
 
 .fade-in {
-    animation: fadeIn 1s;
+    animation: fadeIn 0.7s;
   }
   
   @keyframes fadeIn {
@@ -14,7 +14,7 @@
 
 
 .fade-out {
-  animation: fadeOut 1s;
+  animation: fadeOut 0.7s;
 }
 
 @keyframes fadeOut {
@@ -32,7 +32,7 @@
 
   }
 
-  .home-view, .item-details-view, .category-items-view, .not-found{
+  .home-view, .category-items-view, .not-found{
     padding-top: 1%;
     min-height: 82vh;
   }
@@ -40,4 +40,7 @@
   body {
     background: linear-gradient(#ffffff, #acacac);
   }
-  
+
+  .container {
+    position: relative;
+  }

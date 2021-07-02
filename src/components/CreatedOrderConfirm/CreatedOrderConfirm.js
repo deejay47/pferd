@@ -1,31 +1,32 @@
 import React from "react";
-import { Container, Row, Button } from "react-bootstrap";
+import { Row, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import "./CreatedOrderConfirm.scss";
 
 function CreatedOrderConfirm(props) {
   return (
-    <Container fluid="md" className="created-order-confirm">
+    <div className="created-order-confirm">
       <Row className="justify-content-md-center">
-        <div className="empty-cart text-center fade-in">
-          <h2> ¡Felicidades! tu compra está en camino  </h2>
-         <hr/>
-          <h4> Tus productos están siendo preparados, te los enviaremos cuanto antes</h4>
-          <h6> Orden # <strong>{props.orderId}</strong></h6>
+        <div className="text-center fade-in">
+          <h1> {props.data.title} </h1>
+          <h3> {props.data.subtitle} </h3>
+          <hr/>
+          <h4> {props.data.content} </h4>
+          <h6> Orden # <strong>{props.data.orderId}</strong></h6>
           <br/>
           <Button
             type="button"
             as={Link}
-            to="/"
-            variant="primary"
+            to={props.data.action.url}
+            variant={props.data.action.variant}
             className="text-center"
           >
-            Volver al home
+            {props.data.action.text}
           </Button>
         </div>
       </Row>
-    </Container>
+    </div>
   );
 }
 

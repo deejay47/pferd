@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { useCart } from "../../contexts/cartContext";
-import { useHistory } from "react-router-dom";
-import {Check, X, ChevronDoubleRight} from "react-bootstrap-icons"
+import { useHistory, Link, Redirect } from "react-router-dom";
+import {Check, X, ChevronDoubleRight, ChevronDoubleLeft} from "react-bootstrap-icons"
 import Loading from "../Loading/Loading";
+import { getFirestore } from "../../firebase";
+import CheckoutStepper from "../CheckoutStepper/CheckoutStepper";
 
 import "./CheckoutForm.scss";
-import { getFirestore } from "../../firebase";
-import CreatedOrderConfirm from "../CreatedOrderConfirm/CreatedOrderConfirm";
 
 function CheckoutForm() {  
   const history = useHistory();
@@ -30,7 +30,7 @@ function CheckoutForm() {
   const[orderId, setOrderId] = useState(null)
   const numberFormat = new Intl.NumberFormat("de-DE");
 
-  //Watch de todos los campos del form para deshabilitar registrar órden con datos faltantes
+  //Watch de los campos del form para deshabilitar registrar órden con datos faltantes
   const onValueChange = (event) => {
     setFormFields({...formFields, [event.target.name]: event.target.value})
   }
@@ -93,6 +93,7 @@ function CheckoutForm() {
       date: getDate(),
       orderedItems: orderedItems,
       orderTotalPrice: cart.cart.totalPrice,
+      status: "CREATED"
     };
 
     //Instanciar Firestore
@@ -111,58 +112,25 @@ function CheckoutForm() {
 
   return (
 
-    <Container fluid="md">
+    <div>
     {loading ? (
       <Loading></Loading>
     ) : (
 
         orderId === null ? (
           <Row>
+            <CheckoutStepper active={1}></CheckoutStepper>
           <Col>
             {cart.cart.items.length === 0 ? (
               //Redirigir a cart si está vacío
               history.push("/cart")
             ) : (
               <div className="container">
-                <div className="py-5 text-center">
-                  <div className="cart_title">Finalizar compra</div>
-                </div>
-
+                <br/>
                 <div className="row">
-                  <div className="col-md-4 order-md-2 mb-4">
-                    <h4 className="d-flex justify-content-between align-items-center mb-3">
-                      <span className="text-muted">Tu pedido</span>
-                      <span className="badge badge-secondary badge-pill">
-                        {cart.cart.totalItems} producto/s
-                      </span>
-                    </h4>
-                    <ul className="list-group mb-3">
-                      {cart.cart.items[0]
-                        ? cart.cart.items?.map((item) => (
-                            <li key={item.item.id} className="list-group-item d-flex justify-content-between lh-condensed">
-                              <div>
-                                <h6 className="my-0">{item.item.title}</h6>
-                                <small className="text-muted">
-                                  X {item.quantity}
-                                </small>
-                              </div>
-                              <span className="text-muted">
-                                $ {numberFormat.format(item.item.price)}
-                              </span>
-                            </li>
-                          ))
-                        : ""}
 
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>Total</span>
-                        <strong>
-                          $ {numberFormat.format(cart.cart.totalPrice)}
-                        </strong>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-md-8 order-md-1">
-                    <h4 className="mb-3">Dirección de Facturación</h4>
+                  <div className="col-md-8 order-md-2">
+                    <h4 className="mb-3">Tus datos</h4>
                     <form
                       className="needs-validation"
                       noValidate
@@ -243,7 +211,7 @@ function CheckoutForm() {
                       </div>
 
                       <div className="row">
-                        <div className="col-md-12 mb-12">
+                        <div className="col-md-12 mb-3">
                           <label htmlFor="address">Dirección</label>
                           <input
                             type="text"
@@ -259,7 +227,7 @@ function CheckoutForm() {
                       </div>
 
                       <div className="row">
-                        <div className="col-md-4 mb-6">
+                        <div className="col-md-4 mb-3">
                           <label htmlFor="city">Ciudad</label>
                           <input
                             type="text"
@@ -271,7 +239,7 @@ function CheckoutForm() {
                             required
                           />
                         </div>
-                        <div className="col-md-2 mb-2">
+                        <div className="col-md-2 mb-3">
                           <label htmlFor="zipcode">CP</label>
                           <input
                             type="text"
@@ -293,6 +261,7 @@ function CheckoutForm() {
                             name="state"
                             onChange={onValueChange}
                             required
+                            defaultValue=""
                           >
                             <option disabled value="">Seleccionar...</option>
                             <option value="BUE">Buenos Aires</option>
@@ -322,7 +291,7 @@ function CheckoutForm() {
                           </select>
 
                         </div>
-                        <div className="col-md-2 mb-2">
+                        <div className="col-md-2 mb-3">
                           <label htmlFor="country">País</label>
                           <input
                             type="text"
@@ -382,16 +351,59 @@ function CheckoutForm() {
                       
                     </form>
                   </div>
+                  <div className="col-md-4 order-md-1 mb-4">
+                    <h4 className="d-flex justify-content-between align-items-center mb-3">
+                      <span className="text-muted">Tu pedido</span>
+                      <span className="badge badge-secondary badge-pill">
+                        {cart.cart.totalItems} producto/s
+                      </span>
+                    </h4>
+                    <ul className="list-group mb-3">
+                      {cart.cart.items[0]
+                        ? cart.cart.items?.map((item) => (
+                            <li key={item.item.id} className="list-group-item d-flex justify-content-between lh-condensed">
+                              <div>
+                                <h6 className="my-0">{item.item.title}</h6>
+                                <small className="text-muted">
+                                  X {item.quantity}
+                                </small>
+                              </div>
+                              <span className="text-muted">
+                                $ {numberFormat.format(item.item.price)}
+                              </span>
+                            </li>
+                          ))
+                        : ""}
+
+                      <li className="list-group-item d-flex justify-content-between">
+                        <span>Total</span>
+                        <strong>
+                          $ {numberFormat.format(cart.cart.totalPrice)}
+                        </strong>
+                      </li>
+                    </ul>
+                    <Button
+                        type="button"
+                        as={Link}
+                        to="/cart"
+                        variant="outline-primary"
+                        className="button shop-button float-end"
+                      >
+                        <ChevronDoubleLeft size="25"></ChevronDoubleLeft>{" "}
+                        Modificar pedido
+                      </Button>
+                  </div>
                 </div>
               </div>
             )}
           </Col>
         </Row>
         ) : (
-          <CreatedOrderConfirm orderId={orderId}></CreatedOrderConfirm>
+          <Redirect to={'/payment/' + orderId}/>
+          //TODO: Enviar E-mail. con link de órden para retomar pago en caso de no finalizar
         )
 )}  
-</Container>
+</div>
   );
 
 }

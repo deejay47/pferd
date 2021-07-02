@@ -1,17 +1,21 @@
 .price-tag{
+    margin-top: 5%;
     font-size: 2rem;
 }
 
 .detail-img{
     place-self: center;
-    width: 50% !important; 
+    width: 100% !important; 
 }
 
 .item-count{
-    width: 40%;
     margin: auto;
 }
 
 .description-text{
-    font-size: 1.5rem;
+    font-size: 1rem;
+}
+
+.item-body{
+    margin-top: 5%;
 }

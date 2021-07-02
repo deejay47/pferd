@@ -1,12 +1,12 @@
 import React from "react";
-import { Container, Row, Alert, Spinner } from "react-bootstrap";
+import { Row, Alert, Spinner } from "react-bootstrap";
 
 import './Loading.scss'
 
 function Loading() {
 
     return (
-        <Container fluid="md" className="loading">
+        <div className="loading">
             <Row className="justify-content-md-center">
 
                 <Alert key="1" variant="light" className="text-center loading-card">
@@ -19,7 +19,7 @@ function Loading() {
                 </Alert>
 
             </Row>
-        </Container>
+        </div>
     );
 }
 
