@@ -6,7 +6,7 @@ function NotFound() {
       <div className="container">
         <img
           className="not-found-background"
-          src={"/img/lost.jpg"}
+          src={"/img/assets/lost.jpg"}
           alt="404"
         />
         <div className="not-found-center">

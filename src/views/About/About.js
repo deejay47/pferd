@@ -8,7 +8,7 @@ function About() {
         <div className="container">
           <img
             className="about-background"
-            src={"/img/bikers.jpg"}
+            src={"/img/assets/bikers.jpg"}
             alt="404"
           />
           <div className="about-reseller">
