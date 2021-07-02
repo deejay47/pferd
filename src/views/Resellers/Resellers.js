@@ -6,7 +6,7 @@ function Resellers() {
         <div className="container">
           <img
             className="reseller-background"
-            src={"/img/Reseller.jpg"}
+            src={"/img/reseller.jpg"}
             alt="404"
           />
           <div className="center-reseller">
