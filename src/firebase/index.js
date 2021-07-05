@@ -2,13 +2,13 @@ import firebase from 'firebase/app'
 import "firebase/firestore"
 
 const firebaseConfig = {
-        apiKey: process.env.REACT_APP_FIREBASE_CONFIG_APIKEY,
-        authDomain: process.env.REACT_APP_FIREBASE_CONFIG_AUTHDOMAIN,
-        projectId: process.env.REACT_APP_FIREBASE_CONFIG_PROJECTID,
-        storageBucket: process.env.REACT_APP_FIREBASE_CONFIG_STORAGEBUCKET,
-        messagingSenderId: process.env.REACT_APP_FIREBASE_CONFIG_MESAGGINGSENDERID,
-        appId: process.env.REACT_APP_FIREBASE_CONFIG_APPID,
-        measurementId: process.env.REACT_APP_FIREBASE_CONFIG_MEASUREMENTID
+        apiKey: "AIzaSyAIzxzUVvHrkbTYsW6NBm3_dDewbXCw2yA",
+        authDomain: "pferd-store.firebaseapp.com",
+        projectId: "pferd-store",
+        storageBucket: "pferd-store.appspot.com",
+        messagingSenderId: "277923283408",
+        appId: "1:277923283408:web:f5f9bfc5cf85520b5279d5",
+        measurementId: "G-Q6BDW8JMBW"
 }
 
 const app = firebase.initializeApp(firebaseConfig)
